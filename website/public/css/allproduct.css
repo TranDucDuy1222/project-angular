@@ -1,0 +1,38 @@
+#box-menu-dung{
+    height: 770px;
+}
+.menu-dung {
+    list-style-type: none;
+}
+.menu-dung li {
+    transition: background-color 0.3s; /* Hiệu ứng màu nền khi di chuột vào */
+}
+.menu-dung li input{
+    width: 30px;
+    height: 40px;
+}
+.menu-dung li a{
+    text-decoration: none;
+    color: black;
+}
+.menu-dung li:hover {
+background-color: #f0f0f0; /* Màu nền khi di chuột vào */
+}
+.bgpink{
+    background-color: pink;
+}
+#hover-img{
+    width: 345px;
+    height: 346px;
+}
+#hover-img:hover{
+    opacity: 0.5;
+}
+#hover-sp {
+    color: #000;
+    transition: color 1s ease, text-decoration 1s ease;
+}
+#hover-sp:hover {
+    color: #ff0000;
+    text-decoration: underline;
+}

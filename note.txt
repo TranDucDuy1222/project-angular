@@ -1,0 +1,3 @@
+Chạy json server
+npm install json-server
+npx json-server database.json ( tên file dữ liệu : database.json )

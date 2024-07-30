@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        NIKE
+    </title>
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome-free-6.5.1-web/css/all.min.css">
+    <link rel="stylesheet" href="public/css/nav.css">
+    <link rel="stylesheet" href="public/css/header.css">
+    <link rel="stylesheet" href="public/css/footer.css">
+    <link rel="stylesheet" href="public/css/home.css">
+    <link rel="stylesheet" href="public/css/allproduct.css">
+    <link rel="stylesheet" href="public/css/cart.css">
+    <link rel="stylesheet" href="public/css/detail.css">
+    <link rel="stylesheet" href="public/css/login.css">
+    <link rel="stylesheet" href="public/css/order.css">
+    <link rel="stylesheet" href="public/css/order-detail.css">
+</head>
+<body ng-app="myapp" ng-controller="mainCtrl" class="bg-light">
+  <!-- Nav menu -->
+  <nav class="navbar navbar-expand-lg bg-white">     
+      <div class="container-fluid mx-xl-5">
+        <a class="navbar-brand" href="#!">
+          <img src="public/img/logo-nike.jpg" alt="" class="logo-home">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link fz" href="#!allproduct">
+                Mới và Nổi Bật
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fz" href="#!allproduct">
+                Nam
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fz" href="#!allproduct">
+                Nữ
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fz" href="#!allproduct">
+                  Trẻ Em
+                </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fz" href="#!allproduct">
+                Giảm Giá
+              </a>
+            </li>
+            <li class="nav-item">
+              <div class="d-flex ms-2 search-box">
+                <i class="fa-solid fa-magnifying-glass fa-fade"></i>
+                <input class="form-control" type="search" name="keyw" placeholder="Nhập...">
+              </div>
+            </li>
+            
+          </ul>
+          <ul class="navbar-nav ms-auto me-lg-3">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-user"></i>  
+              </a>
+              <ul class="dropdown-menu">
+                <li ng-show="!user"><a class="dropdown-item" href="#!login">Đăng Nhập</a></li>
+                <li ng-show="!user"><a class="dropdown-item" href="#!signup">Đăng Ký</a></li>
+                <li ng-show="!user"><a class="dropdown-item" href="#!forgot">Quên Mật Khẩu</a></li>
+                <li ng-show="user"><a class="dropdown-item" href="#!">Quản Lý Tài Khoản</a></li>
+                <li ng-show="user"><a class="dropdown-item" href="#!order">Đơn Hàng Đã Mua</a></li>
+                <li ng-show="user"><hr class="dropdown-divider"></li>
+                <li ng-show="user"><a class="dropdown-item" ng-click="logout()">Đăng Xuất</a></li>
+              </ul>
+            </li>   
+            <li class="nav-item dropdown">
+              <a class="nav-link fz dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Hỗ Trợ
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Địa Chỉ Cửa Hàng</a></li>
+                <li><a class="dropdown-item" href="#">Liên Hệ Chúng Tôi</a></li>
+                <li><a class="dropdown-item" href="#">Giới Thiệu</a></li>
+                <li><a class="dropdown-item" href="#">Gửi Phản Hồi</a></li>
+                <li><a class="dropdown-item" href="#">Chính Sách Bán Hàng</a></li>
+              </ul>
+            </li>  
+            <li class="nav-item position-relative" style="width: 35px;">
+                <a class="nav-link" href="#!cart" >
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {{quatitypro() | number}}
+                  </span>
+                </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </nav>
+  <!-- End nav menu -->
+
+  <div ng-view></div>
+
+  <br>
+  <!-- Footer -->
+  <footer class="text-bg-dark card-footer">
+    <div class="container">
+      <br>
+      <div class="panel-heading m-auto d-flex justify-content-center">
+        <div id="footer-dau" class="d-flex">
+          <img src="public/img/icon-youtube.png" alt="" id="icon-youtube">
+        </div>
+        <div id="footer-dau">
+          <img src="public/img/icon-facebook.png" alt="" id="icon-footer">
+        </div>
+        <div id="footer-dau">
+          <img src="public/img/icon-zalo.png" alt="" id="icon-footer">
+        </div>
+        <div id="footer-dau">
+          <img src="public/img/icon-instagram1.png" alt="" id="icon-footer">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm-6 col-xl-3 mt-3">
+          <h5>Tìm Cửa Hàng</h5>
+          <h6>Trở thành thành viên</h6>
+          <h6>Gửi phản hồi</h6>
+        </div>
+        <div class="col-sm-6 col-xl-3 mt-3">
+          <h5>Giúp Đỡ</h5>
+          <p>Các phương thức thanh toán</p>
+          <p>Tình trạng đơn hàng</p>
+          <p>Vận chuyển</p>
+          <p>Trả hàng</p>
+          <p>Liên hệ</p>
+        </div>
+        <div class="col-sm-6 col-xl-3 mt-3">
+          <h5>Giới Thiệu</h5>
+          <p>Giới thiệu về Nike</p>
+          <p>Tin tức</p>
+          <p>Nhà đầu tư</p>
+        </div>
+        <div class="col-sm-6 col-xl-3 mt-2">
+          <h5>Thông tin liên hệ</h5>
+          <p><i class="fa-solid fa-location-dot"></i> Tân Bình , TP.Hồ Chí Minh , Việt Nam</p>
+          <p><i class="fa-solid fa-phone fa-shake"></i> 0979893938.</p>
+          <p><i class="fa-solid fa-envelope"></i> ducduytdd30@gmail.com</p>
+
+        </div>
+      </div>
+      <div class="panel-heading text-center h-100">
+        <p class="m-auto fs-5"> Bản Quyền Thuộc Về Đức Duy &copy; 2024. </p>
+      </div>
+    </div>
+  </footer>
+  <!-- End Footer -->
+
+
+<!-- file FW phải nằm trên cùng -->
+<script src="public/js/angular.min.js"></script>
+<script src="public/js/angular-route.min.js"></script>
+<script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+<script src="public/js/testform.js"></script>
+
+<!-- File xử lý điều hướng -->
+<script src="Controllers/allproductCtrl.js"></script>
+<script src="Controllers/cartCtrl.js"></script>
+<script src="Controllers/detailCtrl.js"></script>
+<script src="Controllers/forgotCtrl.js"></script>
+<script src="Controllers/homeCtrl.js"></script>
+<script src="Controllers/loginCtrl.js"></script>
+<script src="Controllers/mainCtrl.js"></script>
+<script src="Controllers/orderCtrl.js"></script>
+<script src="Controllers/oddetailCtrl.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+#hover-img-home:hover{
+    opacity: 0.5;
+}
+#hover-img-home:hover::after {
+    content: "Xem chi tiết"; /* Nội dung của box */
+    position: absolute;
+    top: 50%; /* Đặt vị trí theo chiều dọc */
+    left: 50%; /* Đặt vị trí theo chiều ngang */
+    transform: translate(-50%, -50%); /* Canh giữa */
+    background-color: rgba(0, 0, 0, 0.8); /* Màu nền của box */
+    color: white; /* Màu chữ */
+    padding: 10px; /* Khoảng cách giữa nội dung và viền */
+    border-radius: 5px; /* Bo tròn viền */
+    display: none; /* Ẩn ban đầu */
+  }
+
+  /* Hiển thị box khi hover vào #hover-img-home */
+  #hover-img-home:hover::after {
+    display: block;
+  }
+  
+#hover-sp {
+    color: #000;
+    transition: color 1s ease, text-decoration 1s ease;
+}
+#hover-sp:hover {
+    color: #ff0000;
+    text-decoration: underline;
+}
+.fs-h1{
+    font-size: 60px;
+}
+.ht-titile{
+    position: relative;
+}
+.ht-titile img{
+    display: block;
+    max-width: 100%;
+    height: 722px;
+
+}
+.ht-titile div{
+    position: absolute;
+    top: 620px;
+    left: 0px;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}

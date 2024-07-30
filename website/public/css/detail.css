@@ -1,0 +1,15 @@
+.img-nho{
+    height: 150px;
+
+}
+.img-random:hover{
+    opacity: 0.5;
+}
+#hover-sp {
+    color: #000;
+    transition: color 1s ease, text-decoration 1s ease;
+}
+#hover-sp:hover {
+    color: #ff0000;
+    text-decoration: underline;
+}

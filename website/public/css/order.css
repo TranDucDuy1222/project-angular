@@ -1,0 +1,7 @@
+li{
+    text-decoration: none;
+    list-style-type: none;
+}
+li:hover{
+    background-color: aliceblue;
+}

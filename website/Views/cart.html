@@ -1,0 +1,179 @@
+<!-- Giỏ hàng -->
+<div class="container" style="min-height: 450px;">
+    <h2 class="text-center"><u>Giỏ Hàng Của Bạn</u></h2>
+    <div class="row">
+        <div class="col-sm-12 col-lg-8">
+            <p class="m-auto fs-3">Chọn Địa Chỉ Nhận Hàng </p>
+            <p style="cursor: pointer;" type="button" class="fs-5">
+                ( Thêm địa chỉ nhận hàng )
+            </p>
+            <hr>
+            <div class="row p-2">
+                <div class="col-lg-9">
+                    <div class="">
+                        <label for="1">
+                            <input type="radio" id="1"> Trần Đức Duy <br> 0939052739, 58 Trần Văn Dư, Phường 13, Tân
+                            Bình, TP. Hồ Chí Minh.
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <button class="btn btn-outline-warning">Sửa</button>
+                    <button class="btn btn-outline-danger">Xóa</button>
+                </div>
+            </div>
+            <div class="row p-2">
+                <div class="col-lg-9">
+                    <div class="">
+                        <label for="2">
+                            <input type="radio" id="2"> Đức Duy <br> 0939052739, 58 Trần Văn Dư, Phường 13, Tân Bình,
+                            TP. Hồ Chí Minh.
+                        </label>
+
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <button class="btn btn-outline-warning">Sửa</button>
+                    <button class="btn btn-outline-danger">Xóa</button>
+                </div>
+            </div>
+            <div class="row p-2">
+                <div class="col-lg-9">
+                    <div class="">
+                        <label for="3">
+                            <input type="radio" id="3"> Duy <br> 0939052739, 58 Trần Văn Dư, Phường 13, Tân Bình, TP. Hồ
+                            Chí Minh.
+                        </label>
+
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <button class="btn btn-outline-warning">Sửa</button>
+                    <button class="btn btn-outline-danger">Xóa</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-4 card mt-1 p-2 fs-5">
+            <div class="card">
+                <select class="form-select fs-5" aria-label="Default select example">
+                    <option selected>Chuyển Phát Nhanh</option>
+                    <option value="1">Hỏa Tốc</option>
+                </select>
+                <div class="row mt-1">
+                    <p class="col-xl-7 ms-2">Phí Vận Chuyển :</p>
+                    <p class="col-xl-4 text-danger">50.000 đ</p>
+                </div>
+            </div>
+            <div class="card mt-1">
+                <p class="ms-2">Phương Thức Thanh Toán :</p>
+                <select class="form-select fs-5" aria-label="Default select example">
+                    <option selected>Thanh Toán Khi Nhận Hàng</option>
+                    <option value="1">Chuyển Khoản Ngân Hàng</option>
+                </select>
+            </div>
+            <div class="card mt-1">
+                <p class="ms-2">Mã Giảm Giá :</p>
+                <input type="text" class="w-100 border border-light-subtle">
+            </div>
+
+
+        </div>
+    </div>
+    <br>
+    <table class="table table-hover w-100 text-center fs-6">
+        <thead>
+            <tr>
+                <td colspan="2"><strong>Số Lượng Sản Phẩm : {{quatitypro() | number}} </strong></td>
+                <td colspan="3"><strong>Thành Tiền : {{total() | number : ''}} đ</strong></td>
+                <td colspan="2"><button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Mua Hàng</button></td>
+            </tr>
+            <tr>
+                <th style="width: 10%;">Ảnh</th>
+                <th style="width: 25%;">Tên Sản Phẩm</th>
+                <th style="width: 5%;">Size</th>
+                <th style="width: 15%;">Giá</th>
+                <th style="width: 10%;">Số Lượng</th>
+                <th style="width: 20%;">Thành Tiền</th>
+                <th style="width: 5%;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="sp in carts">
+                <td><img src="public/img/{{sp.img}}" alt="" id="img-cart"></td>
+                <td> {{sp.name}} </td>
+                <td>{{sp.size}}</td>
+                <td> {{sp.discount | number :''}} </td>
+                <td>
+                    <div class="input-group">
+                        <input type="number" ng-change="savecarts()" ng-model="sp.quantity"
+                            class="form-control input-group-lg text-center" min="1">
+                    </div>
+                </td>
+                <td> {{sp.discount*sp.quantity | number: ''}} đ</td>
+                <td><button ng-click="deletecarts($index)" class="btn btn-outline-danger">Xóa</button></td>
+            </tr>
+            <td colspan="7">
+                <button ng-click="deleteall()" class="btn btn-outline-danger">Xóa tất cả</button>
+            </td>
+        </tbody>
+    </table>
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Địa Chỉ Giao Hàng :</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="inputName">Họ Và Tên</label>
+                            <input type="text" ng-model="name" class="form-control" id="inputName" name="hoten"
+                                placeholder="Vui lòng nhập họ tên">
+                        </div>
+                        <div class="form-group">
+                            <label>Số Điện Thoại</label>
+                            <input type="number" ng-model="phone" class="form-control" id="sdt" name="phone"
+                                placeholder="Vui lòng nhập số điện thoại">
+                        </div>
+                        <!-- Lấy từ file dataaddress -->
+                        <div class="form-group">
+                            <label for="inputCity">Tỉnh / Thành Phố :</label>
+                            <select class="form-control" ng-model="tinhtp"
+                                ng-options="tinh.Name for tinh in dsTinh"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputCity">Quận / Huyện :</label>
+                            <select class="form-control" ng-model="quanhuyen"
+                                ng-options="quan.Name for quan in tinhtp.Districts" value="{{quanhuyen}}"></select>
+                        </div>
+                        <div class="form-group">
+                            <label>Phường / Xã :</label>
+                            <select class="form-control" ng-model="phuongxa" ng-options="px.Name for px in quanhuyen.Wards" value="{{phuongxa}}"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress">Địa Chỉ Cụ Thể</label>
+                            <input type="text" ng-model="address" class="form-control" id="inputAddress" name="diachichitiet">
+                        </div>
+                        <hr>
+                        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Kiểm tra lại</button>
+                        <button type="button" class="btn btn-outline-dark" ng-click="checkOrder()" name="submit-diachi">Xác nhận</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end giỏ hàng -->
+<!-- Chờ load web -->
+<div class="container">
+    <div ng-show="isLoading"
+        class="position-fixed top-0 bottom-0 start-0 end-0 z-3 text-bg-dark d-flex justify-content-center align-items-center">
+        <i class="fa-solid fa-spin fa-spinner"></i>
+        Đang tải...
+    </div>
+</div>
+<!-- End chờ load web -->

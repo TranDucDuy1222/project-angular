@@ -1,0 +1,147 @@
+<!-- Đăng Nhập -->
+<div class="container">
+  <ul class="nav nav-tabs w-50 m-auto" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
+        role="tab" aria-controls="home-tab-pane" aria-selected="true">Đăng Nhập</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button"
+        role="tab" aria-controls="profile-tab-pane" aria-selected="false">Đăng Ký</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show card w-50 m-auto p-4 active" id="home-tab-pane" role="tabpanel"
+      aria-labelledby="home-tab" tabindex="0">
+      <form class="needs-validation" name="formLogin" ng-submit="login()">
+        <h1 class="text-center">Đăng Nhập</h1>
+        <hr>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Số Điện Thoại</label>
+          <div class="input-group">
+            <div class="input-group-text">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <input type="tel" ng-model="phone" class="form-control input-group-lg" name="phone" id="phone"
+              pattern="^(0[0-9]{9})$" required>
+          </div>
+          <div ng-show="formLogin.phone.$error.required && formLogin.phone.$touched" class="text-muted">
+            Bạn chưa nhập số điện thoại
+          </div>
+          <div ng-show="formLogin.phone.$error.pattern" class="text-muted">
+            Vui lòng nhập số bắt đầu từ 0
+          </div>
+          <div ng-show="formLogin.phone.$valid" class="text-muted">
+            Hợp Lệ!
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Mật Khẩu</label>
+          <div class="input-group">
+            <div class="input-group-text">
+              <i class="fa-solid fa-lock"></i>
+            </div>
+            <input type="password" ng-model="pw" class="form-control" name="password" id="exampleInputPassword1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&/])[A-Za-z\d@$!%*?&/]{5,}$" required>          
+          </div>
+          <div ng-show="formLogin.password.$error.required && formLogin.password.$touched" class="text-muted">
+            Bạn chưa nhập mật khẩu
+          </div>
+          <div ng-show="formLogin.password.$error.pattern" class="text-muted">
+            Vui lòng nhập mật khẩu có độ dài trên 5 kí tự , chữ hoa , số và kí tự đặt biệt
+          </div>
+          <div ng-show="formLogin.password.$valid" class="text-muted">
+            Hợp Lệ!
+          </div>
+
+          <a href="#!forgot" class="nav-link ms-auto qmk"><strong class="">Quên Mật Khẩu</strong></a>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Ghi Nhớ Mật Khẩu</label>
+        </div>
+        <button type="submit" class="btn btn-outline-dark">
+          Đăng Nhập
+        </button>
+      </form>
+      <div ng-show="iserros" class="alert alert-danger mt-2">
+        Đăng nhập thất bại. Vui lòng kiểm tra lại số điện thoại hoặc mật khẩu của ban!
+      </div>
+    </div>
+    <div class="tab-pane fade card w-50 m-auto p-4" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+      tabindex="0">
+      <form class="needs-validation" novalidate>
+        <h1 class="text-center">Đăng Ký</h1>
+        <hr>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Số Điện Thoại</label>
+          <div class="input-group">
+            <div class="input-group-text">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <input type="tel" class="form-control input-group-lg" id="exampleInputEmail1" aria-describedby="emailHelp"
+              pattern="^(0[0-9]{9})$" required>
+            <div class="valid-feedback">
+              Số điện thoại hợp lệ
+            </div>
+            <div class="invalid-feedback">
+              Vui lòng nhập số điện thoại hợp lệ. Và bắt đầu từ số 0
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <div class="input-group">
+            <div class="input-group-text">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <input type="email" class="form-control input-group-lg" id="exampleInputEmail1" aria-describedby="emailHelp"
+              required>
+            <div class="valid-feedback">
+              Email hợp lệ
+            </div>
+            <div class="invalid-feedback">
+              Vui lòng nhập số điện thoại hợp lệ!
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Mật Khẩu</label>
+          <div class="input-group">
+            <div class="input-group-text">
+              <i class="fa-solid fa-lock"></i>
+            </div>
+            <input type="password" class="form-control" id="exampleInputPassword1"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required>
+            <div class="valid-feedback">
+              Mật khẩu hợp lệ
+            </div>
+            <div class="invalid-feedback">
+              Vui lòng nhập có kí tự hoa, thường , số, kí tự đặc biệt và trên 8 kí tự
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Ghi Nhớ Mật Khẩu</label>
+        </div>
+        <button type="submit" class="btn btn-outline-dark">
+          Xác Nhận
+        </button>
+      </form>
+    </div>
+  </div>
+
+</div>
+<!-- end đăng Nhập -->
+
+<!-- Chờ load web -->
+<div class="container">
+  <div ng-show="isLoading"
+    class="position-fixed top-0 bottom-0 start-0 end-0 z-3 text-bg-dark d-flex justify-content-center align-items-center">
+    <i class="fa-solid fa-spin fa-spinner"></i>
+    Đang tải...
+  </div>
+</div>
+<!-- End chờ load web -->

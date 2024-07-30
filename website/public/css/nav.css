@@ -1,0 +1,32 @@
+/* nav */
+.logo-home{
+    width: 110px;
+    height: 50px;
+
+}
+label{
+    font-size: larger;
+}
+.search-box {
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 5px;
+}
+
+.search-box i {
+    margin-right: 5px;
+    color: #888;
+}
+.fz{
+    font-size: large;
+}
+

@@ -1,0 +1,110 @@
+<!-- Chi tiết đơn hàng  -->
+
+<div class="container mt-4">
+    <h3 class="text-center">Thông tin đơn hàng</h3>
+    <hr>
+    <div class="row m-auto">
+        <div class="col-xl-4">
+            <i class="fa-solid fa-truck"></i>
+            <strong>Thông tin vận chuyển</strong><br>
+            <p>Chuyển phát nhanh <br> Ngày đặt hàng : {{oddetail.date | date: 'dd/MMM/yyyy HH:mm' }}<br>Dự kiến giao
+                hàng vào : {{ oddetail.date | date: 'dd/MM/yyyy HH:mm'}}</p><br>
+        </div>
+        <div class="col-xl-4">
+            <strong>Phương thức thanh toán</strong><br>
+            <p>Thanh toán bằng tiền mặt</p>
+        </div>
+        <div class="col-xl-4">
+            <i class="fa-solid fa-location-dot"></i>
+            <strong>Địa chỉ nhận hàng</strong>
+            <p> {{oddetail.name}} | {{oddetail.phone}} <br> {{oddetail.address}}, {{oddetail.px.Name}},
+                {{oddetail.quan.Name}}, {{oddetail.tinh.Name}}.</p>
+        </div>
+    </div>
+    <table class="table w-100 text-center fs-6">
+        <thead>
+            <tr>
+                <td colspan="1">
+                    <button class="btn btn-outline-danger" ng-show="oddetail.status == 1"
+                        ng-click="cancel(oddetail.id)">Hủy đơn hàng</button>
+                    <button ng-show="oddetail.status == 2" class="btn btn-danger">Đang giao hàng</button>
+                    <button ng-show="oddetail.status == 3" class="btn btn-danger" type="button" data-bs-toggle="modal"
+                        data-bs-target="#danhgia">Đánh giá</button>
+                    <button ng-show="oddetail.status == 4" class="btn btn-danger">Đã Hủy</button>
+                    <button ng-show="oddetail.status == 5" class="btn btn-danger">Xem đánh giá</button>
+                </td>
+                <td colspan="3">
+                    <strong ng-show="oddetail.status == 1">Trạng thái đơn hàng : Chờ xác nhận</strong>
+                    <strong ng-show="oddetail.status == 2">Trạng thái đơn hàng : Đang giao hàng</strong>
+                    <strong ng-show="oddetail.status == 3">Trạng thái đơn hàng : Đã giao hàng thành công</strong>
+                    <strong ng-show="oddetail.status == 4">Trạng thái đơn hàng : Đã hủy đơn hàng</strong>
+                    <strong ng-show="oddetail.status == 5">Trạng thái đơn hàng : Đơn hàng đã được đánh giá</strong>
+                </td>
+                <td colspan="1"><strong>Tổng Tiền : {{oddetail.total | number : ''}} đ</strong></td>
+            </tr>
+            <tr>
+                <th style="width: 15%;">Ảnh</th>
+                <th style="width: 25%;">Tên Sản Phẩm</th>
+                <th style="width: 20%;">Giá</th>
+                <th style="width: 10%;">Số Lượng</th>
+                <th style="width: 20%;">Thành Tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="pro in oddetail.products">
+                <td><img src="public/img/{{pro.img}}" alt="" id="img-cart"></td>
+                <td>{{pro.name}}</td>
+                <td>{{pro.discount | number :''}}</td>
+                <td>{{pro.quantity}}</td>
+                <td>{{pro.discount * pro.quantity | number :''}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal đánh giá của sản phẩm  -->
+<div class="modal fade" id="danhgia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Đánh Giá Sản Phẩm</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div ng-repeat="pro in oddetail.products">
+                <form>
+                    <div class="modal-body">
+                        <p class="text-center fs-5">{{pro.name}}</p>
+                        <input type="hidden" ng-model="idgiay" value="{{pro.id}}">
+                        <input type="hidden" id="name" ng-model="name" value="{{oddetail.name}}">
+                        <label>Chất Lượng Sản Phẩm:</label>
+                        <input type="text" class="w-100 border rounded" ng-model="cl">
+                        <label>Nội Dung Bình Luận:</label>
+                        <input type="text" class="w-100 border rounded" ng-model="ndbl">
+                        <label>Sản Phẩm Đúng Mô Tả Không?</label>
+                        <select class="form-control" ng-model="mota">
+                            <option value="0">Đúng với mô tả</option>
+                            <option value="1">Không đúng với mô tả</option>
+                        </select>
+                    </div>
+                    <hr style="width: 95%;" class="m-auto">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Thoát</button>
+                        <button type="button" ng-click="review()" class="btn btn-outline-danger">Xác Nhận</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- End chi tiết đơn hàng -->
+
+<!-- Chờ load web -->
+<div class="container">
+    <div ng-show="isLoading"
+        class="position-fixed top-0 bottom-0 start-0 end-0 z-3 text-bg-dark d-flex justify-content-center align-items-center">
+        <i class="fa-solid fa-spin fa-spinner"></i>
+        Đang tải...
+    </div>
+</div>
+<!-- End chờ load web -->

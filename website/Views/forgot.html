@@ -1,0 +1,114 @@
+<!-- Quên mật khẩu -->
+<div class="container" style="min-height: 430px;">
+    <br>
+    <div class="w-50 m-auto card">
+        <form class="needs-validation p-2" novalidate>
+            <h1 class="text-center">Quên Mật Khẩu</h1>
+            <hr>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Số Điện Thoại</label>
+              <div class="input-group">
+                <div class="input-group-text">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <input type="tel" class="form-control input-group-lg" id="exampleInputEmail1" aria-describedby="emailHelp" pattern="^(0[0-9]{9})$" required>
+                <div class="valid-feedback">
+                  Số điện thoại đã hợp lệ
+                </div>
+                <div class="invalid-feedback">
+                  Vui lòng nhập số điện thoại hợp lệ và bắt đầu từ số 0
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Mã OTP</label>
+              <div class="input-group">
+                <div class="input-group-text">
+                    <i class="fa-solid fa-comment"></i>
+                </div>
+                <input type="text" class="form-control" id="exampleInputPassword1"  required>
+              </div>
+            </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Xác Nhận
+            </button>
+        </form>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Nhập Mật Khẩu Mới</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Số Điện Thoại</label>
+                        <div class="input-group">
+                        <div class="input-group-text">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <input type="tel" class="form-control input-group-lg" id="exampleInputEmail1" aria-describedby="emailHelp" pattern="^(0[0-9]{9})$" required>
+                        <div class="valid-feedback">
+                            Số điện thoại đã hợp lệ
+                        </div>
+                        <div class="invalid-feedback">
+                            Vui lòng nhập số điện thoại hợp lệ và bắt đầu từ số 0
+                        </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Mật Khẩu Mới</label>
+                    <div class="input-group">
+                        <div class="input-group-text">
+                        <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <input type="password" class="form-control" id="exampleInputPassword1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required>
+                        <div class="valid-feedback">
+                        Mật khẩu hợp lệ
+                        </div>
+                        <div class="invalid-feedback">
+                            Vui lòng nhập có kí tự hoa, thường , số, kí tự đặc biệt và trên 8 kí tự 
+                        </div>
+                    </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Nhập Lại Mật Khẩu</label>
+                        <div class="input-group">
+                        <div class="input-group-text">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <input type="password" class="form-control" id="exampleInputPassword1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required>
+                        <div class="valid-feedback">
+                            Mật khẩu hợp lệ
+                        </div>
+                        <div class="invalid-feedback">
+                            Vui lòng nhập có kí tự hoa, thường , số, kí tự đặc biệt và trên 8 kí tự 
+                        </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
+            <button type="button" class="btn btn-primary">Gửi</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+</div>
+<!-- end quên mật khẩu -->
+
+<!-- Chờ load web -->
+<div class="container">
+    <div ng-show="isLoading" class="position-fixed top-0 bottom-0 start-0 end-0 z-3 text-bg-dark d-flex justify-content-center align-items-center">
+        <i class="fa-solid fa-spin fa-spinner"></i>
+        Đang tải...
+    </div>
+</div>
+<!-- End chờ load web -->
